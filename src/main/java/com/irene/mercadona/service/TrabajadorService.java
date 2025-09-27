@@ -35,7 +35,7 @@ public class TrabajadorService {
         return trabajadorRepository.save(trabajadorEditado);
     }
 
-    public void eliminarTrabajador(String dni) {
+    public void eliminarTrabajadorPorDni(String dni) {
 
         trabajadorRepository.deleteById(dni);
 

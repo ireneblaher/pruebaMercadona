@@ -26,11 +26,11 @@ public class Tienda {
     private String nombre;
 
     //Relacion 1:N con trabajadores
-    @OneToMany(mappedBy = "tienda", cascade = CascadeType.ALL)
-    private List<Trabajador> trabajadores;
+  /*  @OneToMany(mappedBy = "tienda", cascade = CascadeType.ALL)
+    private List<Trabajador> trabajadores;*/
 
     //Relacion 1:N con secciones
-    @OneToMany(mappedBy = "tienda", cascade = CascadeType.ALL)
-    private List<Seccion> secciones;
+    /*@OneToMany(mappedBy = "tienda", cascade = CascadeType.ALL)
+    private List<Seccion> secciones;*/
 
 }

@@ -35,7 +35,7 @@ public class Trabajador {
     private Tienda tienda;
 
     //Relacion 1:N con asignaciones
-    @OneToMany(mappedBy = "trabajador", cascade = CascadeType.ALL)
-    private List<Asignacion> asignaciones;
+   /* @OneToMany(mappedBy = "trabajador", cascade = CascadeType.ALL)
+    private List<Asignacion> asignaciones;*/
 
 }

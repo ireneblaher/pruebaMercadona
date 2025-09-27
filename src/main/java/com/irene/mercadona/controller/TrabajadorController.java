@@ -13,28 +13,28 @@ public class TrabajadorController {
 
     private final TrabajadorService trabajadorService;
 
-    @GetMapping
+    @GetMapping("/consultarTrabajadores")
     public List<Trabajador> consultarTrabajadores(){
         return trabajadorService.consultarTrabajadores();
     }
 
-    @GetMapping("/{dni}")
+    @GetMapping("/consultarTrabajador/{dni}")
     public Trabajador consultarTrabajadoresPorDni(@PathVariable String dni){
         return trabajadorService.consultarTrabajadorPorDni(dni);
     }
 
-    @PostMapping
+    @PostMapping("/crearTrabajador")
     public Trabajador crearTrabajador(@RequestBody Trabajador trabajador){
         return trabajadorService.crearTrabajador(trabajador);
     }
 
-    @PutMapping("/{dni}")
+    @PutMapping("/editarTrabajador/{dni}")
     public Trabajador editarTrabajador(@PathVariable String dni, @RequestBody Trabajador t) {
         return trabajadorService.editarTrabajador(dni, t);
     }
 
-    @DeleteMapping("/{dni}")
-    public void eliminarTrabajador(@PathVariable String dni) {
-        trabajadorService.eliminarTrabajador(dni);
+    @DeleteMapping("/eliminarTrabajador/{dni}")
+    public void eliminarTrabajadorPorDni(@PathVariable String dni) {
+        trabajadorService.eliminarTrabajadorPorDni(dni);
     }
 }

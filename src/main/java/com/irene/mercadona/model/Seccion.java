@@ -21,7 +21,7 @@ public class Seccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String nombre;
 
     @Column(nullable = false)
@@ -33,7 +33,7 @@ public class Seccion {
     private Tienda tienda;
 
     //Relacion 1:N con asignaciones
-    @OneToMany(mappedBy = "seccion", cascade = CascadeType.ALL)
-    private List<Asignacion> asignaciones;
+   /* @OneToMany(mappedBy = "seccion", cascade = CascadeType.ALL)
+    private List<Asignacion> asignaciones;*/
 
 }
