@@ -12,20 +12,27 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "seccion")
+/**
+ * Tabla seccion
+ */
 public class Seccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
+    @Column(unique = true, nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private int horasDiarias;
 
-
+    //Relacion N:1 con tienda
     @ManyToOne
-    @JoinColumn(name = "codigo")
+    @JoinColumn(name = "tienda_codigo")
     private Tienda tienda;
 
+    //Relacion 1:N con asignaciones
     @OneToMany(mappedBy = "seccion", cascade = CascadeType.ALL)
     private List<Asignacion> asignaciones;
 

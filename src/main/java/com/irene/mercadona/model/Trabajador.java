@@ -12,17 +12,29 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "trabajador")
+/**
+ * Tabla Trabajador
+ */
 public class Trabajador {
+
     @Id
     private String dni;
 
+    @Column(nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private String apellidos;
 
-    @ManyToOne
-    @JoinColumn(name = "codigo")
+    @Column(nullable = false)
+    private int horasDisponibles;
+
+    //Relacion N:1 con tienda
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "tienda_codigo")
     private Tienda tienda;
 
+    //Relacion 1:N con asignaciones
     @OneToMany(mappedBy = "trabajador", cascade = CascadeType.ALL)
     private List<Asignacion> asignaciones;
 

@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "asignacion")
+/**
+ * Tabla Asignacion
+ */
 public class Asignacion {
 
     @Id
@@ -18,12 +21,14 @@ public class Asignacion {
 
     private int horasAsignadas;
 
-    @ManyToOne
-    @JoinColumn(name = "dni")
+    //Relacion N:1 con trabajador
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "trabajador_dni")
     private Trabajador trabajador;
 
-    @ManyToOne
-    @JoinColumn(name = "codigo")
+    //Relacion N:1 con seccion
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "seccion_codigo")
     private Seccion seccion;
 
 }
