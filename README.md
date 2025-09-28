@@ -95,8 +95,8 @@ API para poder asignar/desasignar a un trabajador a una sección
 durante cierto número de horas. Asegurándonos de que no excedemos las
 horas disponibles del trabajador.
 
-- GET `/api/products` - Get all products
-- GET `/api/products/{id}` - Get a specific product by ID
+- GET `http://localhost:8080/informes/estado-tienda` - Muestra el estado de las tiendas
+- GET `http://localhost:8080/informes/secciones-incompletas` - Obtiene las secciones que no se han completado sus horas
 
 
 ## Manejo de errores
