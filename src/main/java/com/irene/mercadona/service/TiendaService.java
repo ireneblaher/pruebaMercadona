@@ -1,12 +1,16 @@
 package com.irene.mercadona.service;
 
 import com.irene.mercadona.model.Tienda;
+import com.irene.mercadona.model.Trabajador;
 import com.irene.mercadona.repository.TiendaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * Lógica de negocio correspondiente a las tiendas
+ */
 @Service
 @RequiredArgsConstructor
 public class TiendaService {
@@ -17,27 +21,30 @@ public class TiendaService {
         return tiendaRepository.findAll();
     }
 
-    public Tienda consultarTiendaPorCodigo (Long codigo){
-        return tiendaRepository.findById(codigo)
-                .orElseThrow(() -> new RuntimeException("Tienda no encontrada"));
+    public Optional<Tienda> consultarTiendaPorCodigo (Long codigo){
+        return tiendaRepository.findById(codigo);
     }
 
     public Tienda crearTienda(Tienda tienda){
         return tiendaRepository.save(tienda);
     }
 
-    public Tienda editarTienda(Long codigo, Tienda tienda) {
-        Tienda tiendaEditada = consultarTiendaPorCodigo(codigo);
-        tiendaEditada.setNombre(tienda.getNombre());
-        tiendaEditada.setCodigo(tienda.getCodigo());
-        return tiendaRepository.save(tiendaEditada);
+    public Optional<Tienda> editarTienda(Long codigo, Tienda tActualizada) {
+
+        return tiendaRepository.findById(codigo).map(tAntigua -> {
+            tAntigua.setNombre(tActualizada.getNombre());
+            return tiendaRepository.save(tAntigua);
+        });
 
     }
 
-    public void eliminarTienda(Long codigo){
+    public boolean eliminarTienda(Long codigo){
 
-        tiendaRepository.deleteById(codigo);
-
+        if (tiendaRepository.existsById(codigo)) {
+            tiendaRepository.deleteById(codigo);
+            return true;
+        }
+        return false;
     }
 
 }

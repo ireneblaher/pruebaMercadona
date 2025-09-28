@@ -1,12 +1,16 @@
 package com.irene.mercadona.service;
 
 import com.irene.mercadona.model.Seccion;
+import com.irene.mercadona.model.Trabajador;
 import com.irene.mercadona.repository.SeccionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * Lógica de negocio correspondiente a las secciones
+ */
 @Service
 @RequiredArgsConstructor
 public class SeccionService {
@@ -17,25 +21,30 @@ public class SeccionService {
         return seccionRepository.findAll();
     }
 
-    public Seccion consultarSeccionPorCod(Long codigo){
-        return seccionRepository.findById(codigo)
-                .orElseThrow(() -> new RuntimeException("Trabajador no encontrado"));
+    public Optional<Seccion> consultarSeccionPorCod(Long codigo){
+        return seccionRepository.findById(codigo);
     }
 
     public Seccion crearSeccion(Seccion seccion){
         return seccionRepository.save(seccion);
     }
 
-    public Seccion editarSeccion(Long codigo, Seccion seccion) {
-        Seccion seccionEditada = consultarSeccionPorCod(codigo);
-        seccionEditada.setNombre(seccion.getNombre());
-        seccionEditada.setHorasDiarias(seccion.getHorasDiarias());
-        return seccionRepository.save(seccionEditada);
+    public Optional<Seccion> editarSeccion(Long codigo, Seccion sActualizada) {
+
+        return seccionRepository.findById(codigo).map(sAntigua -> {
+            sAntigua.setNombre(sActualizada.getNombre());
+            sAntigua.setHorasNecesarias(sActualizada.getHorasNecesarias());
+            return seccionRepository.save(sAntigua);
+        });
     }
 
-    public void eliminarSeccion(Long codigo) {
+    public boolean eliminarSeccion(Long codigo) {
 
-        seccionRepository.deleteById(codigo);
+        if(seccionRepository.existsById(codigo)){
+            seccionRepository.deleteById(codigo);
+            return true;
+        }
+        return false;
 
     }
 }

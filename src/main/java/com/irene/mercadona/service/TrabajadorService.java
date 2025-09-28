@@ -5,12 +5,13 @@ import com.irene.mercadona.repository.TrabajadorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * Lógica de negocio correspondiente a los trabajadores
+ */
 @Service
 @RequiredArgsConstructor
-/**
- * Servicio para gestionar los trabajadores
- */
 public class TrabajadorService {
 
     private final TrabajadorRepository trabajadorRepository;
@@ -19,25 +20,31 @@ public class TrabajadorService {
         return trabajadorRepository.findAll();
     }
 
-    public Trabajador consultarTrabajadorPorDni(String codigo){
-        return trabajadorRepository.findById(codigo)
-                .orElseThrow(() -> new RuntimeException("Trabajador no encontrado"));
+    public Optional<Trabajador> consultarTrabajadorPorDni(String codigo){
+        return trabajadorRepository.findById(codigo);
     }
 
     public Trabajador crearTrabajador(Trabajador trabajador){
         return trabajadorRepository.save(trabajador);
     }
 
-    public Trabajador editarTrabajador(String dni, Trabajador trabajador) {
-        Trabajador trabajadorEditado = consultarTrabajadorPorDni(dni);
-        trabajadorEditado.setNombre(trabajador.getNombre());
-        trabajadorEditado.setApellidos(trabajador.getApellidos());
-        return trabajadorRepository.save(trabajadorEditado);
+    public Optional<Trabajador> editarTrabajador(String dni, Trabajador tActualizado) {
+
+        return trabajadorRepository.findById(dni).map(tAntiguo -> {
+            tAntiguo.setNombre(tActualizado.getNombre());
+            tAntiguo.setApellidos(tActualizado.getApellidos());
+            tAntiguo.setHorasDisponibles(tActualizado.getHorasDisponibles());
+            tAntiguo.setTienda(tActualizado.getTienda());
+            return trabajadorRepository.save(tAntiguo);
+        });
     }
 
-    public void eliminarTrabajadorPorDni(String dni) {
+    public boolean eliminarTrabajadorPorDni(String dni) {
 
-        trabajadorRepository.deleteById(dni);
-
+        if(trabajadorRepository.existsById(dni)){
+            trabajadorRepository.deleteById(dni);
+            return true;
+        }
+        return false;
     }
 }
