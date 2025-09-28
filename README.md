@@ -1,18 +1,19 @@
 # Mercadona Spring Boot REST API 
 
-A RESTful API built with Spring Boot for managing products. This API provides endpoints for creating, reading, updating, and deleting product information.
+Aplicación creada para el manejo de un supermercado.
 
 ## Features
 
-- CRUD operations for products
-- Category-based product filtering
-- Price-based product filtering
-- Name-based product search
+- API de trabajadores
+- API de informes
+- Se implementaron otras API de consulta básicas
+- Manejo de errores
 - Global exception handling
-- Input validation
-- MySQL database integration
+- Validación de los input
+- Internacionalización
+- Integración con PostgreSQL
 
-## Technologies
+## Technologías
 
 - Java 21
 - Spring Boot 3.4.6
@@ -24,7 +25,7 @@ A RESTful API built with Spring Boot for managing products. This API provides en
 - Maven
 
 
-## Prerequisites
+## Prerequisitos
 
 - JDK 21 or later
 - Maven 3.9+
@@ -40,22 +41,19 @@ spring.datasource.username=postgres
 spring.datasource.password=0000
 ```
 
-## Building and Running the Application
+## Construyendo y lanzando la aplicación
 
-1. Clone the repository
-2. Navigate to the project directory
-3. Build the project:
-   ```bash
-   ./mvnw clean install
-   ```
-4. Run the application:
-   ```bash
-   ./mvnw spring-boot:run
-   ```
+1. Inicializar el proyecto en un entorno como intelliJ(Se ejecuta en el puerto 8080)
+2. Crear la BBDD PosgreSQL (Se ejecuta en el puerto 5432)
+   - Database: mercadona
+   - Las tablas se crean automáticamente.
+   - Inserts se encuentran en `data.sql`
+3. Probar las API utilizar Postman, todas los endpoints están en el fichero`MercadonaPrueba.postman_collection`.
 
-The application will start on port 8080.
+A considerar: se tenía pensado incluir la aplicación en un contenedor Docker al igual que la BBDD, 
+pero no se ha hecho por falta de tiempo.
 
-## API Endpoints
+## API Endpoints (Se adjuntan en el repositorio de GitHub también en el fichero`MercadonaPrueba.postman_collection`)
 
 ### Trabajadores
 API con las operaciones de consulta, creación, edición y borrado
@@ -89,7 +87,7 @@ asignados y las horas disponibles según su contrato.
 ```
 - DELETE `http://localhost:8080/trabajadores/eliminarPorDni/70896574J` - Eliminar trabajador a partir de su DNI
 
-### Asignaciones
+### Informes
 
 API para poder asignar/desasignar a un trabajador a una sección
 durante cierto número de horas. Asegurándonos de que no excedemos las
