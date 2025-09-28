@@ -62,11 +62,32 @@ API con las operaciones de consulta, creación, edición y borrado
 de trabajadores de una tienda. Incluyendo la tienda a la que están
 asignados y las horas disponibles según su contrato.
 
-- GET `/api/products` - Get all products
-- GET `/api/products/{id}` - Get a specific product by ID
-- POST `/api/products/category/{categoryName}` - Get products by category
-- PUT `/api/products/price/{maxPrice}` - Get products with price less than or equal to maxPrice
-- DELETE `/api/products/search?name={name}` - Search products by name
+- GET `http://localhost:8080/trabajadores/consultarTodos` - Consultar todos los trabajadores
+- GET `http://localhost:8080/trabajadores/consultarPorDni/70336574T` - Consultar un trabajador por su DNI
+- POST `http://localhost:8080/trabajadores/crear` - Crear trabajador
+ ``` JSON 
+{
+  "dni": "70336574T",
+  "nombre": "Diego",
+  "apellidos": "Jimenez Sanchez",
+  "horasDisponibles": 8,
+  "tienda": {
+  "codigo": 5
+  }
+  }
+```
+- PUT `/api/products/price/{maxPrice}` - Editar trabajador a partir de su DNI
+ ``` JSON 
+{
+  "nombre": "Irene Actualizada",
+  "apellidos": "Jimenez Perez",
+  "horasDisponibles": 8,
+  "tienda": {
+    "codigo": 1
+  }
+}
+```
+- DELETE `http://localhost:8080/trabajadores/eliminarPorDni/70896574J` - Eliminar trabajador a partir de su DNI
 
 ### Asignaciones
 
