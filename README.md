@@ -48,6 +48,7 @@ spring.datasource.password=0000
    - Database: mercadona
    - Las tablas se crean automáticamente.
    - Inserts se encuentran en `data.sql`
+   - 
 3. Probar las API utilizar Postman, todas los endpoints están en el fichero`MercadonaPrueba.postman_collection`.
 
 A considerar: se tenía pensado incluir la aplicación en un contenedor Docker al igual que la BBDD, 
