@@ -63,7 +63,7 @@ para consultas básicas de consultar,crear,editar y borrar de todas las Entidade
 
 - Para la subida de los contenedores se han utilizado los siguientes comandos:
     - mercadona-app: `docker tag mercadona-app iblazquez/mercadona-app` y 
-`docker push iblazquez/mercadona-app`
+`docker push iblazquez/mercadona-app` 
   - postgres: `docker tag postgres:12 iblazquez/postgres:12` y
     `docker push iblazquez/postgres:12`
 - Si se quieren descargar, están en las siguientes rutas:
