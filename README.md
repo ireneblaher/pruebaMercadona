@@ -91,7 +91,7 @@ asignados y las horas disponibles según su contrato.
   }
   }
 ```
-- PUT `/api/products/price/{maxPrice}` - Editar trabajador a partir de su DNI
+- PUT `http://localhost:8080/trabajadores/editarPorDni/70336574T` - Editar trabajador a partir de su DNI
  ``` JSON 
 {
   "nombre": "Irene Actualizada",
