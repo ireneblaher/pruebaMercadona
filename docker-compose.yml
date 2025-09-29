@@ -1,0 +1,18 @@
+
+services:
+  app:
+    build: .
+    container_name: mercadona-app
+    ports:
+      - "8080:8080"
+
+
+  postgres:
+    image: postgres:latest
+    container_name: mercadona-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 0000
+      POSTGRES_DB: mercadona
+    ports:
+      - "5432:5432"
