@@ -11,9 +11,10 @@ Aplicación creada para el manejo de un supermercado.
 - Global exception handling
 - Validación de los input
 - Internacionalización
-- Integración con PostgreSQL
+- Integración BBDD con PostgreSQL
+- Contenedores Docker
 
-## Technologías
+## Tecnologías
 
 - Java 21
 - Spring Boot 3.4.6
@@ -27,32 +28,38 @@ Aplicación creada para el manejo de un supermercado.
 
 ## Prerequisitos
 
-- JDK 21 or later
+- JDK 21 o posterior
 - Maven 3.9+
 - PostgreSQL Server
+- Docker
+- Postman
 
 ## Configuración de la BBDD
 
-La aplicación está configurada para conectarse a una BBDD PosgreSQL. Las propiedades se encuentran en `src/main/resources/application.properties` si se necesita:
+La aplicación está configurada para conectarse a una BBDD PosgreSQL. Las propiedades se encuentran en 
+`src/main/resources/application.properties` 
+y
+`Dockerfile`
 
-```propiedades
-spring.datasource.url=jdbc:postgresql://localhost:5432/mercadona
-spring.datasource.username=postgres
-spring.datasource.password=0000
-```
+## Configuración del proyecto
+
+La aplicación se ha integrado con Docker, para ello se han creado dos contenedores con nombres
+`mercadona-app` para la aplicación
+y `mercadona-bd` para contener la BBDD postgreSQL
+para ello se ha definido el fichero `docker-compose.yml` y `DockerFile` donde se indican todas las configuraciones,
+desde que puertos se conectan entre sí, usuarios, contraseñas, de donde se obtienen las imágenes,
+nombres de contenedores...
 
 ## Construyendo y lanzando la aplicación
 
-1. Inicializar el proyecto en un entorno como intelliJ(Se ejecuta en el puerto 8080)
-2. Crear la BBDD PosgreSQL (Se ejecuta en el puerto 5432)
-   - Database: mercadona
-   - Las tablas se crean automáticamente.
-   - Inserts se encuentran en `data.sql`
-   - 
-3. Probar las API utilizar Postman, todas los endpoints están en el fichero`MercadonaPrueba.postman_collection`.
+He dejado los dos contenedores creados, pero si se quiere generar y ver el contenido del código,
+estos son los pasos:
+1. Ejecutar el comando `docker-compose up` en la ruta raíz del proyecto.
+2. Abrir las conexiones postman del fichero `MercadonaPrueba.postman_collection`.
+3. Probar las api que se quieran(Se crearon los endpoints que se pedían en Iteración 1 y 2,
+se podrían probar más pero no se han implementado en Postman, aunque si está creada la lógica,
+para consultas básicas de consultar,crear,editar y borrar de todas las Entidades)
 
-A considerar: se tenía pensado incluir la aplicación en un contenedor Docker al igual que la BBDD, 
-pero no se ha hecho por falta de tiempo.
 
 ## API Endpoints (Se adjuntan en el repositorio de GitHub también en el fichero`MercadonaPrueba.postman_collection`)
 
@@ -119,11 +126,15 @@ Se ha configurado en el fichero `/main/java/aplication.properties`
 spring.messages.basename=messages
 spring.messages.encoding=UTF-8
 ```
-Los ficheros de propiedades se encuentran en:
-Default: `\mercadona\src\main\resources\messages.properties`
-Español: `\mercadona\src\main\resources\messages_es.properties`
-Portugués: `\mercadona\src\main\resources\messages_pt.properties`
-Inglés: `\mercadona\src\main\resources\messages_en.properties`
+Los ficheros de propiedades para los siguientes idiomas, se encuentran en:
+
+- Default: `\mercadona\src\main\resources\messages.properties`
+
+- Español: `\mercadona\src\main\resources\messages_es.properties`
+
+- Portugués: `\mercadona\src\main\resources\messages_pt.properties`
+
+- Inglés: `\mercadona\src\main\resources\messages_en.properties`
 
 ## Desarrollo
 
