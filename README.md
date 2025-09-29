@@ -53,7 +53,7 @@ nombres de contenedores...
 ## Construyendo y lanzando la aplicación
 
 
-He dejado los dos contenedores creados, pero si se quiere generar y ver el contenido del código,
+- He dejado los dos contenedores creados, pero si se quiere generar y ver el contenido del código,
 estos son los pasos:
 1. Ejecutar el comando `docker-compose up` en la ruta raíz del proyecto.
 2. Abrir las conexiones postman del fichero `MercadonaPrueba.postman_collection`.
@@ -61,11 +61,14 @@ estos son los pasos:
 se podrían probar más pero no se han implementado en Postman, aunque si está creada la lógica,
 para consultas básicas de consultar,crear,editar y borrar de todas las Entidades)
 
-Para la subida de los contenedores se han utilizado los siguientes comandos:
-- mercadona-app: `docker tag mercadona-app iblazquez/mercadona-app` y 
+- Para la subida de los contenedores se han utilizado los siguientes comandos:
+    - mercadona-app: `docker tag mercadona-app iblazquez/mercadona-app` y 
 `docker push iblazquez/mercadona-app`
-- postgres: `docker tag postgres:12 iblazquez/postgres:12` y
-  `docker push iblazquez/postgres:12`
+  - postgres: `docker tag postgres:12 iblazquez/postgres:12` y
+    `docker push iblazquez/postgres:12`
+- Si se quieren descargar, están en las siguientes rutas:
+  - `docker pull iblazquez/mercadona-app:latest`
+  - `docker pull iblazquez/postgres:12`
 
 ## API Endpoints (Se adjuntan en el repositorio de GitHub también en el fichero`MercadonaPrueba.postman_collection`)
 
