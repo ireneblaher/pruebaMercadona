@@ -1,4 +1,4 @@
-# Mercadona Spring Boot REST API 
+# Supermercado Spring Boot REST API 
 
 Aplicación creada para el manejo de un supermercado.
 
@@ -56,7 +56,7 @@ nombres de contenedores...
 - He dejado los dos contenedores creados, pero si se quiere generar y ver el contenido del código,
 estos son los pasos:
 1. Ejecutar el comando `docker-compose up` en la ruta raíz del proyecto.
-2. Abrir las conexiones postman del fichero `MercadonaPrueba.postman_collection`.
+2. Abrir las conexiones postman del fichero `SuperPrueba.postman_collection.json`.
 3. Probar las api que se quieran(Se crearon los endpoints que se pedían en Iteración 1 y 2,
 se podrían probar más pero no se han implementado en Postman, aunque si está creada la lógica,
 para consultas básicas de consultar,crear,editar y borrar de todas las Entidades)
@@ -70,7 +70,7 @@ para consultas básicas de consultar,crear,editar y borrar de todas las Entidade
   - `docker pull iblazquez/mercadona-app:latest`
   - `docker pull iblazquez/postgres:12`
 
-## API Endpoints (Se adjuntan en el repositorio de GitHub también en el fichero`MercadonaPrueba.postman_collection`)
+## API Endpoints (Se adjuntan en el repositorio de GitHub también en el fichero`SuperPrueba.postman_collection.json`)
 
 ### Trabajadores
 API con las operaciones de consulta, creación, edición y borrado
